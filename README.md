@@ -1,2 +1,2 @@
 # cpp_template_numcpp
-Starter project tyemplate with 
+Starter project template using NumCpp 
