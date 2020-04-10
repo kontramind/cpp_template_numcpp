@@ -1,8 +1,6 @@
 # option(CPP_STARTER_USE_QT "Enable compilation of QT sample" OFF)
 # option(CPP_STARTER_USE_FLTK "Enable compilation of FLTK sample" OFF)
-# option(CPP_STARTER_USE_GTKMM "Enable compilation of GTKMM sample" OFF)
 # option(CPP_STARTER_USE_IMGUI "Enable compilation of ImGui sample" OFF)
-# option(CPP_STARTER_USE_NANA "Enable compilation of Nana GUI sample" OFF)
 # option(CPP_STARTER_USE_SDL "Enable compilation of SDL sample" OFF)
 
 # # sdl
@@ -23,35 +21,17 @@
 #   add_subdirectory(fltk)
 # endif()
 
-# # gtkmm test
-# if(CPP_STARTER_USE_GTKMM)
-#   message("Using gtkmm")
-#   add_subdirectory(gtkmm)
-# endif()
-
 # # imgui example
 # if(CPP_STARTER_USE_IMGUI)
 #   message("Using Dear ImGui")
 #   add_subdirectory(imgui)
 # endif()
 
-# # Nana
-# if(CPP_STARTER_USE_NANA)
-#   message("Using Nana")
-#   add_subdirectory(nana)
-# endif()
-
-# NumCpp
-
 # Generic test that uses conan libs
 add_executable(intro main.cpp)
-target_link_libraries(intro PRIVATE project_options project_warnings
-                      CONAN_PKG::boost
+target_link_libraries(intro
+                      PRIVATE
+                      project_options
+                      project_warnings
+                      ${Boost_LIBRARIES}
 )
-# target_link_libraries(intro PRIVATE project_options project_warnings
-#                       CONAN_PKG::boost_core
-#                       CONAN_PKG::boost_endian
-#                       CONAN_PKG::boost_math
-#                       CONAN_PKG::boost_predef
-#                       CONAN_PKG::boost_random
-#                       CONAN_PKG::boost_utility)

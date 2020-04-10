@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 
+find_package(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+
 # Set the project name to your project name, my project isn't very descriptive
 project(myproject CXX)
 include(cmake/StandardProjectSettings.cmake)
@@ -43,24 +46,14 @@ option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
 
 # Set up some extra Conan dependencies based on our needs
 # before loading Conan
-set(CONAN_EXTRA_REQUIRES "")
-set(CONAN_EXTRA_OPTIONS "")
-
-
+# set(CONAN_EXTRA_REQUIRES "")
+# set(CONAN_EXTRA_OPTIONS "")
 # set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES}
-#   boost_core/1.69.0@bincrafters/stable
-#   boost_endian/1.69.0@bincrafters/stable 
-#   boost_math/1.69.0@bincrafters/stable 
-#   boost_predef/1.69.0@bincrafters/stable 
-#   boost_random/1.69.0@bincrafters/stable
-#   boost_utility/1.69.0@bincrafters/stable)
+#   boost/1.69.0@conan/stable
+# )
 
-  set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES}
-    boost/1.69.0@conan/stable
-  )
-
-include(cmake/Conan.cmake)
-run_conan()
+# include(cmake/Conan.cmake)
+# run_conan()
 
 message("Using NumCpp")
 find_path(NUMCPP_INCLUDE_PATH NAMES NumCpp.hpp PATHS extern/NumCpp/include)
