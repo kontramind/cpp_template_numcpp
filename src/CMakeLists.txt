@@ -33,5 +33,6 @@ target_link_libraries(intro
                       PRIVATE
                       project_options
                       project_warnings
-                      ${Boost_LIBRARIES}
+                      Catch2::Catch2
+                      NumCpp::NumCpp
 )

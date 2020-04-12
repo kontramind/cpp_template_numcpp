@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-find_package(Boost REQUIRED)
+find_package(Boost 1.72.0 REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
 # Set the project name to your project name, my project isn't very descriptive
@@ -55,12 +55,8 @@ option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
 # include(cmake/Conan.cmake)
 # run_conan()
 
-message("Using NumCpp")
-find_path(NUMCPP_INCLUDE_PATH NAMES NumCpp.hpp PATHS extern/NumCpp/include)
-if (NOT NUMCPP_INCLUDE_PATH)
-  message(FATAL_ERROR "Can not use NumCpp")
-endif()
-include_directories(SYSTEM "${NUMCPP_INCLUDE_PATH}")
+add_subdirectory(extern/Catch2)
+add_subdirectory(extern/NumCpp)
 
 # if(ENABLE_TESTING)
 #   enable_testing()
